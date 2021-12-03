@@ -79,8 +79,8 @@ class MainFragment : RowsSupportFragment() {
             listRowAdapter = when (i) {
                 0 -> ArrayObjectAdapter(cardPresenterPortrait)
                 1 -> ArrayObjectAdapter(cardPresenterLandscape)
-                2 -> ArrayObjectAdapter(cardPresenterSquare)
-                3 -> ArrayObjectAdapter(bigCardPresenterLand)
+                2 -> ArrayObjectAdapter(bigCardPresenterLand)
+                3 -> ArrayObjectAdapter(cardPresenterSquare)
                 4 -> ArrayObjectAdapter(bigCardPresenterPortrait)
                 else -> ArrayObjectAdapter(cardPresenterPortrait)
             }

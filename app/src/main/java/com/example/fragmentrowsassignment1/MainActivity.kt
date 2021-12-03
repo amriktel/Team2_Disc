@@ -40,6 +40,7 @@ import com.example.fragmentrowsassignment1.BigCardPresenterPortrait.BigCardItemV
  * Main Activity class that loads {@link MainFragment}.
  */
 class MainActivity : FragmentActivity() {
+    private var mainFragment: MainFragment? =  null
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -47,7 +48,12 @@ class MainActivity : FragmentActivity() {
         //load fragment
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
+        mainFragment = MainFragment()
         transaction.add(R.id.rows_frame, MainFragment())
         transaction.commit()
+    }
+
+    fun getMainFragment(): MainFragment? {
+        return mainFragment;
     }
 }
