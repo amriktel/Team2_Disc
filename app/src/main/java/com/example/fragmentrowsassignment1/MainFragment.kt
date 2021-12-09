@@ -1,5 +1,6 @@
 package com.example.fragmentrowsassignment1
 
+import android.content.Intent
 import android.graphics.Color
 import com.example.fragmentrowsassignment1.MovieList
 import androidx.fragment.app.FragmentActivity
@@ -29,8 +30,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.widget.ImageView
 //import com.example.fragmentrowsassignment1.CardPresenterSquare.SquareCardViewHolder
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.leanback.widget.*
 import com.example.fragmentrowsassignment1.BigCardPresenterLand.BigCardItemViewHolder
 import com.example.fragmentrowsassignment1.CardPresenterPortrait.PortraitCardViewHolder
@@ -49,8 +52,8 @@ class MainFragment : RowsSupportFragment() {
         Log.i(TAG, "onCreate")
         super.onActivityCreated(savedInstanceState)
         //prepareBackgroundManager()
-
         // setupUIElements();
+
         loadRows()
         setupEventListeners()
     }
@@ -91,14 +94,7 @@ class MainFragment : RowsSupportFragment() {
             i++
         }
 
-        /*HeaderItem gridHeader = new HeaderItem(i, "PREFERENCES");
-
-        GridItemPresenter mGridPresenter = new GridItemPresenter();
-        ArrayObjectAdapter gridRowAdapter = new ArrayObjectAdapter(mGridPresenter);
-        gridRowAdapter.add(getResources().getString(R.string.grid_view));
-        gridRowAdapter.add(getString(R.string.error_fragment));
-        gridRowAdapter.add(getResources().getString(R.string.personal_settings));
-        rowsAdapter.add(new ListRow(gridHeader, gridRowAdapter));*/adapter = rowsAdapter
+        adapter = rowsAdapter
     }
 
     /*private fun prepareBackgroundManager() {
@@ -137,21 +133,21 @@ class MainFragment : RowsSupportFragment() {
     }
 
     private fun updateBackground(uri: String?) {
-//        val width = mMetrics!!.widthPixels
-//        val height = mMetrics!!.heightPixels
-        /*Glide.with(activity)
-            .load(uri)
-            .centerCrop()
-            .error(mDefaultBackground)
-            .into(object : SimpleTarget<GlideDrawable?>(width, height) {
-                override fun onResourceReady(
-                    resource: GlideDrawable,
-                    glideAnimation: GlideAnimation<in GlideDrawable>
-                ) {
-                    mBackgroundManager!!.drawable = resource
-                }
-            })
-        mBackgroundTimer!!.cancel()*/
+        /*  val width = mMetrics!!.widthPixels
+          val height = mMetrics!!.heightPixels
+          Glide.with(activity)
+              .load(uri)
+              .centerCrop()
+              .error(mDefaultBackground)
+              .into(object : SimpleTarget<GlideDrawable?>(width, height) {
+                  override fun onResourceReady(
+                      resource: GlideDrawable,
+                      glideAnimation: GlideAnimation<in GlideDrawable>
+                  ) {
+                      mBackgroundManager!!.drawable = resource
+                  }
+              })
+          mBackgroundTimer!!.cancel()*/
     }
 
     private fun startBackgroundTimer() {
@@ -165,20 +161,13 @@ class MainFragment : RowsSupportFragment() {
     private inner class ItemViewClickedListener : OnItemViewClickedListener {
         override fun onItemClicked(
             itemViewHolder: Presenter.ViewHolder ?, item: Any ?,
-            rowViewHolder: RowPresenter.ViewHolder ?, row: Row ?
-        ) {
+            rowViewHolder: RowPresenter.ViewHolder ?, row: Row ?) {
             if (item is Movie) {
                 val movie = item
-                Log.d(TAG, "Item: $item")
-                /* Intent intent = new Intent(getActivity(), DetailsActivity.class);
-                intent.putExtra(DetailsActivity.MOVIE, movie);
+                val intent = Intent(activity, PlayerActivity::class.java)
+                intent.putExtra("movie", movie)
+                startActivity(intent)
 
-                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        getActivity(),
-                        ((ImageCardView) itemViewHolder.view).getMainImageView(),
-                        DetailsActivity.SHARED_ELEMENT_NAME)
-                        .toBundle();
-                getActivity().startActivity(intent, bundle);*/
             }
         }
     }
