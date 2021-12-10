@@ -76,7 +76,7 @@ when(actionTypeReceivedFromBroadcast){
 
 ## Reference
 
-- <a href="https://developer.android.com/guide/topics/ui/picture-in-picture">PIP Developer Doc</a> 
-- <a href="https://www.youtube.com/watch?v=TxAbht2DkyU">PIP Video Guide</a>
+- <a href="https://developer.android.com/guide/topics/ui/picture-in-picture" target="_blank">PIP Developer Doc</a> 
+- <a href="https://www.youtube.com/watch?v=TxAbht2DkyU" target="_blank">PIP Video Guide</a>
   
 
